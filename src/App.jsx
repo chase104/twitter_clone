@@ -11,8 +11,11 @@ function App() {
     // useEffect, go and get tweets, then setTweets
     useEffect(() => {
       axios("/tweets").then((res) => {
+        let arrayFromCollection = res.data;
+        // res.status res.something res.data
+        // now we have array  of tweets from database
         console.log(res);
-        setTweets(res.data)
+        setTweets(arrayFromCollection)
       })
     }, []);
 
@@ -21,7 +24,7 @@ function App() {
     <h1>My Twitter Clone</h1>
   {/* create data  DONE*/}
     <Form   tweets={tweets} setTweets={setTweets}  />
-    <DisplayTweets tweets={tweets} />
+    <DisplayTweets tweets={tweets} setTweets={setTweets} />
   {/* read data */}
   {/* update data */}
   {/* delete data */}

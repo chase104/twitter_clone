@@ -18,7 +18,7 @@ app.post('/tweets', createTweet)
 app.get('/tweets', getTweets)
 
 // U send ID in params. Send update stuff in req.body
-app.put('/tweets/:tweetId', updateTweet)
+app.put('/tweets/:tweetId/:newTitle', updateTweet)
 
 // D
 app.delete('/tweets/:tweetId', deleteTweet)

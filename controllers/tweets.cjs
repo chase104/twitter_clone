@@ -12,6 +12,7 @@ const createTweet = async (req, res) => {
 }
 
 const getTweets = async (req, res) => {
+    // make a request to databse, get a response (an array of objects)
     let response = await Tweet.find();
     res.json(response)
 }
@@ -21,8 +22,7 @@ const updateTweet = async (req, res) => {
     // make changes HERE in the function
     // use the .save() method
     let objectFromDatabase = await Tweet.findById(req.params.tweetId);
-    objectFromDatabase.firstName = req.body.firstName;
-    objectFromDatabase.lastName = req.body.lastName;
+    objectFromDatabase.title = req.params.newTitle;
     objectFromDatabase.save();
     res.send({
         message: "updated document",
@@ -31,7 +31,7 @@ const updateTweet = async (req, res) => {
 };
 
 const deleteTweet = async (req, res) => {
-   
+   console.log("route hit");
     let response = await Tweet.findByIdAndDelete(req.params.tweetId);
     res.send(response)
 }
